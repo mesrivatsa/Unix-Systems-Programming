@@ -1,0 +1,32 @@
+//reverse the contents of the file "file.txt" using lseek.
+#include<stdio.h>
+#include<stdlib.h>
+#include<io.h>
+
+void main()
+{
+ int fd=open("C:\\file.txt","rw");
+
+ if(fd==-1)
+ {
+  printf("FIle does not exists....");
+  return ;
+ }
+
+ char c;
+ int i=0;
+
+ lseek(fd,-1L-i,SEEK_END);
+
+ do
+ {
+  read(fd,&c,1);
+  printf("%c",c);
+  i++;
+ }
+while( lseek(fd,-1L-(i),SEEK_END)!=0);
+
+read(fd,&c,1);
+printf("%c",c);
+
+}//end
